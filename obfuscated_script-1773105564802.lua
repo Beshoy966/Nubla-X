@@ -1,7 +1,7 @@
 local _b64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 local _key=90
 local function _dec(s)
-    -- base64 decode + XOR
+    
     local t={}
     for i=1,#s do
         local ch=s:sub(i,i)
@@ -22,7 +22,7 @@ local function _dec(s)
         if t[i+2] then bytes[#bytes+1]=b2~_key end
         if t[i+3] then bytes[#bytes+1]=b3~_key end
     end
-    -- حوّل لـ string بـ chunks (تجنب stack overflow)
+    
     local r=""
     local chunk=128
     for i=1,#bytes,chunk do
@@ -3503,3 +3503,4 @@ _d=_d.."My4pLzQ/GTI/OTFgCT8ucn0RMy4pLzQ/ehMpNjs0PnoUNS56CSo7LTQzND16uMfWfXpzUHp6
 local _f,_e=loadstring(_dec(_d))
 if not _f then error(_e) end
 _f()
+
