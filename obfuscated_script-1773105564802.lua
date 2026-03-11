@@ -1212,9 +1212,15 @@ local function lIi0(s)
     return out
 end
 local lIo0=lIi0(lIoI)
-local lIil={}
-for lIiO,lIio in ipairs(lIo0) do
-    lIil[lIiO]=lIio~lIoO[(lIiO-1)%#lIoO+1]
+local lIil=""
+local lIiO=1
+while lIiO<=#lIo0 do
+    local lIiX={}
+    for lIiY=lIiO,math.min(lIiO+127,#lIo0) do
+        lIiX[#lIiX+1]=lIo0[lIiY]~lIoO[(lIiY-1)%#lIoO+1]
+    end
+    lIil=lIil..string.char(table.unpack(lIiX))
+    lIiO=lIiO+128
 end
-local lIiI=loadstring(string.char(table.unpack(lIil)))
+local lIiI=loadstring(lIil)
 if lIiI then lIiI() end
